@@ -35,7 +35,7 @@
 - UserDetailService 를 이용하기
 - WebSecurityConfigurerAdapter 를 사용하기
 
-## 실습할 내용
+## 테스트 해볼 내용
 
 1. basic-test 서버에 기본 사용자(user) 로 로그인한다
 2. applicaiton.yml 에 user1 을 만들고 로그인한다.
@@ -91,7 +91,7 @@
 
 ---
 
-## 실습하기
+## 테스트 해보기
 
 - 필터 설정하고 확인하기
 - 필터를 ignore 하기
