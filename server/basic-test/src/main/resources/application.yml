@@ -1,9 +1,11 @@
-server :
-  port : 9050
+server:
+  port: 9050
+
+
 
 spring:
   security:
     user:
       name: user1
-      password : 1111
-      roles : USER
+      password: 1234
+      roles: USER
