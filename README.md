@@ -7,7 +7,7 @@
 - 서버 리소스
 - 유저들의 개인정보
 
-<img src="../images/fig-0-site-securities.png" width="600" style="max-width:600px;width:100%;" />
+<img src="https://gitlab.com/jongwons.choi/spring-boot-security-lecture/-/raw/master/images/fig-0-site-securities.png" width="600" style="max-width:600px;width:100%;" />
 
 ## 인증 (Authentication)
 
@@ -50,7 +50,7 @@
 
 - 톰켓과 같은 웹 애플리케이션을 서블릿 컨테이너라고 부르는데, 이런 웹 애플리케이션(J2EE Application)은 기본적으로 필터와 서블릿으로 구성되어 있습니다.
 
-<img src="../images/fig-1-servlet-container.png" width="600" style="max-width:600px;width:100%;" />
+<img src="https://gitlab.com/jongwons.choi/spring-boot-security-lecture/-/raw/master/images/fig-1-servlet-container.png" width="600" style="max-width:600px;width:100%;" />
 
 - 필터는 체인처럼 엮여있기 때문에 필터 체인이라고도 불리는데, 모든 request 는 이 필터 체인을 반드시 거쳐야만 서블릿 서비스에 도착하게 됩니다.
 
@@ -58,7 +58,7 @@
 
 - 그래서 스프링 시큐리티는 DelegatingFilterProxy 라는 필터를 만들어 메인 필터체인에 끼워넣고, 그 아래 다시 SecurityFilterChain 그룹을 등록합니다.
 
-<img src="../images/fig-2-spring-big-picture.png" width="600" style="max-width:600px;width:100%;" />
+<img src="https://gitlab.com/jongwons.choi/spring-boot-security-lecture/-/raw/master/images/fig-2-spring-big-picture.png" width="600" style="max-width:600px;width:100%;" />
 
 - 이 필터체인은 반드시 한개 이상이고, url 패턴에 따라 적용되는 필터체인을 다르게 할 수 있습니다. 본래의 메인 필터를 반드시 통과해야만 서블릿에 들어갈 수 있는 단점을 보완하기 위해서 필터체인 Proxy 를 두었다고 할 수 있습니다.
 
@@ -68,7 +68,7 @@
 
 - 이 필터체인에는 다양한 필터들이 들어갑니다.
 
-<img src="../images/fig-4-filters.png" width="600" style="max-width:600px;width:100%;" />
+<img src="https://gitlab.com/jongwons.choi/spring-boot-security-lecture/-/raw/master/images/fig-4-filters.png" width="600" style="max-width:600px;width:100%;" />
 
 - 각각의 필터는 단일 필터 단일 책임(?) 원칙 처럼, 각기 서로 다른 관심사를 해결합니다.. 예를 들면 아래와 같습니다.
   - _HeaderWriterFilter_ : Http 해더를 검사한다. 써야 할 건 잘 써있는지, 필요한 해더를 더해줘야 할 건 없는가?
