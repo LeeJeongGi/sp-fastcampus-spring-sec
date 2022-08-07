@@ -1,5 +1,6 @@
 package com.sp.fc.web.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +20,21 @@ public class HomeController {
                 .getAuthentication();
     }
 
-//    public Security
+    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
+    @RequestMapping("/user")
+    public SecurityMessage user() {
+        return SecurityMessage.builder()
+                .auth(SecurityContextHolder.getContext().getAuthentication())
+                .message("User 정보")
+                .build();
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    @RequestMapping("/admin")
+    public SecurityMessage admin() {
+        return SecurityMessage.builder()
+                .auth(SecurityContextHolder.getContext().getAuthentication())
+                .message("Admin 정보")
+                .build();
+    }
 }
