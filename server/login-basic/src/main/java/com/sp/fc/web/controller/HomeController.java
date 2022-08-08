@@ -27,7 +27,7 @@ public class HomeController {
         model.addAttribute("loginError", true);
         return "loginForm";
     }
-
+    
     @GetMapping("/access-denied")
     public String accessDenied(){
         return "AccessDenied";
@@ -44,8 +44,7 @@ public class HomeController {
     public String adminPage(){
         return "AdminPage";
     }
-
-
+    
     @ResponseBody
     @GetMapping("/auth")
     public Authentication auth(){
