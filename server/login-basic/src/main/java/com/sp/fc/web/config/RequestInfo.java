@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @Builder
 public class RequestInfo {
 
+    private LocalDateTime loginTime;
     private String remoteIp;
     private String sessionId;
-    private LocalDateTime loginTime;
-
+    
 }

@@ -35,5 +35,4 @@ public class HomeController {
                 .message("admin page")
                 .build();
     }
-
 }
