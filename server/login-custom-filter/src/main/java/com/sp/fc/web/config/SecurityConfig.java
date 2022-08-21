@@ -29,11 +29,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(teacherManager);
     }
 
+    private final StudentManager studentManager;
+    private final TeacherManager teacherManager;
+
+    public SecurityConfig(StudentManager studentManager, TeacherManager teacherManager) {
+        this.studentManager = studentManager;
+        this.teacherManager = teacherManager;
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(studentManager);
+        auth.authenticationProvider(teacherManager);
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         CustomLoginFilter filter = new CustomLoginFilter(authenticationManager());
-
         http
                 .authorizeRequests(request->
                         request.antMatchers("/", "login").permitAll()

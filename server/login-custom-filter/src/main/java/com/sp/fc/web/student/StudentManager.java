@@ -27,6 +27,7 @@ public class StudentManager implements AuthenticationProvider, InitializingBean 
                     .principal(student)
                     .details(student.getUsername())
                     .authenticated(true)
+                    .authorities(student.getRole())
                     .build();
         }
 
@@ -44,6 +45,10 @@ public class StudentManager implements AuthenticationProvider, InitializingBean 
                 new Student("hong", "홍길동", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT"))),
                 new Student("kang", "강아지", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT"))),
                 new Student("rang", "호랑이", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT")))
-        ).forEach(s -> studentDB.put(s.getId(), s));
+
+        ).forEach(s->
+            studentDB.put(s.getId(), s)
+        );
+
     }
 }

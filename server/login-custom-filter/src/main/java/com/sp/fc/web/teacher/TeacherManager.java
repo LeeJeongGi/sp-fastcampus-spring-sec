@@ -1,5 +1,7 @@
 package com.sp.fc.web.teacher;
 
+import com.sp.fc.web.student.Student;
+import com.sp.fc.web.student.StudentAuthenticationToken;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,9 +21,11 @@ public class TeacherManager implements AuthenticationProvider, InitializingBean 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
+
         TeacherAuthenticationToken token = (TeacherAuthenticationToken) authentication;
 
         if (teacherDB.containsKey(token.getCredentials())) {
+
             Teacher teacher = teacherDB.get(token.getCredentials());
             return TeacherAuthenticationToken.builder()
                     .principal(teacher)
@@ -29,7 +33,6 @@ public class TeacherManager implements AuthenticationProvider, InitializingBean 
                     .authenticated(true)
                     .build();
         }
-
         return null;
     }
 
@@ -42,6 +45,10 @@ public class TeacherManager implements AuthenticationProvider, InitializingBean 
     public void afterPropertiesSet() throws Exception {
         Set.of(
                 new Teacher("choi", "최선생", Set.of(new SimpleGrantedAuthority("ROLE_TEACHER")))
-        ).forEach(s -> teacherDB.put(s.getId(), s));
+        ).forEach(s->
+            teacherDB.put(s.getId(), s)
+        );
+
+
     }
 }
