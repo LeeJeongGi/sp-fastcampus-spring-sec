@@ -18,8 +18,10 @@ public class StudentManager implements AuthenticationProvider, InitializingBean 
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
         StudentAuthenticationToken token = (StudentAuthenticationToken) authentication;
-        if(studentDB.containsKey(token.getCredentials())){
+
+        if (studentDB.containsKey(token.getCredentials())) {
             Student student = studentDB.get(token.getCredentials());
             return StudentAuthenticationToken.builder()
                     .principal(student)
@@ -28,6 +30,7 @@ public class StudentManager implements AuthenticationProvider, InitializingBean 
                     .authorities(student.getRole())
                     .build();
         }
+
         return null;
     }
 
@@ -42,8 +45,10 @@ public class StudentManager implements AuthenticationProvider, InitializingBean 
                 new Student("hong", "홍길동", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT"))),
                 new Student("kang", "강아지", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT"))),
                 new Student("rang", "호랑이", Set.of(new SimpleGrantedAuthority("ROLE_STUDENT")))
+
         ).forEach(s->
             studentDB.put(s.getId(), s)
         );
+
     }
 }

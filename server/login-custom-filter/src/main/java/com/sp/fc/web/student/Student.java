@@ -17,5 +17,4 @@ public class Student {
     private String id;
     private String username;
     private Set<GrantedAuthority> role;
-
 }

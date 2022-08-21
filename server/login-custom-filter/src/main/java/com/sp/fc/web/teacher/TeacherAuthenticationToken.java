@@ -31,5 +31,4 @@ public class TeacherAuthenticationToken implements Authentication {
     public String getName() {
         return principal == null ? "" : principal.getUsername();
     }
-
 }

@@ -24,6 +24,10 @@ public class StudentAuthenticationToken implements Authentication {
     private boolean authenticated;
     private Set<GrantedAuthority> authorities;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return principal == null ? new HashSet<>() : principal.getRole();
+    }
 
     @Override
     public String getName() {

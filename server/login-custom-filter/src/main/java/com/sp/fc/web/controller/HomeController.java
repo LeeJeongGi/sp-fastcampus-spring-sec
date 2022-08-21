@@ -38,4 +38,10 @@ public class HomeController {
     public String accessDenied(){
         return "accessDenied";
     }
+
+    @ResponseBody
+    @GetMapping("/auth")
+    public Authentication auth(){
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
 }

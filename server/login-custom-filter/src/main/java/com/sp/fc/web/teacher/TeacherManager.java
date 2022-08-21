@@ -20,8 +20,12 @@ public class TeacherManager implements AuthenticationProvider, InitializingBean 
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
+
         TeacherAuthenticationToken token = (TeacherAuthenticationToken) authentication;
-        if(teacherDB.containsKey(token.getCredentials())){
+
+        if (teacherDB.containsKey(token.getCredentials())) {
+
             Teacher teacher = teacherDB.get(token.getCredentials());
             return TeacherAuthenticationToken.builder()
                     .principal(teacher)
@@ -44,5 +48,7 @@ public class TeacherManager implements AuthenticationProvider, InitializingBean 
         ).forEach(s->
             teacherDB.put(s.getId(), s)
         );
+
+
     }
 }
